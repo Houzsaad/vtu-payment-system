@@ -1,7 +1,8 @@
-venv/
+venv
 .env
 __pychace__/
 *.pyc
 *.pyo
 *.log
 *.env
+db.sqlite3

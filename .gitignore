@@ -1,0 +1,6 @@
+.env
+__pychace__/
+*.pyc
+*.pyo
+*.log
+*.env

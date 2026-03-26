@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Confirm Transaction</h2>
+
+<p><strong>Services:</strong> {{ services }}</p>
+<p><strong>Network:</strong> {{ pendin.network }}</p>
+<p><strong>Phone Number:</strong> {{ pending.number }}</p>
+<p><strong>Amount:</strong> ${{ pending.amount }}</p>
+
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="phone" value="{{ phone }}">
+  <input type="hidden" name="amount" value="{{ amount }}">
+  <input type="hidden" name="service" value="{{ service }}">
+  <input
+      type="password" 
+      name="pin" 
+      placeholder="Enter PIN"
+      maxlength="4"
+      pattern="\d{4}"
+      inputmode="numeric"
+      required
+  >
+  <button type="submit">Confirm</button>
+  <button type="submit">Cancel</button>
+</form>
+
+{% endblock %}

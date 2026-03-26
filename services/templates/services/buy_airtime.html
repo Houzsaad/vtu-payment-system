@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Buy Airtime</h2>
+
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if not selected_network %}
+<!-- Step 1: Select Network -->
+<form method="POST" action="">
+        {%  csrf_token %}
+        <input type="hidden" name="select_network" value="1">
+
+        <div>
+            <label>Select Network</label>
+            {{ network_form.network }}
+
+            
+        {% if network_form.errors %}
+            <p style="color: red;">{{ network_form.errors }}</p>
+        {% endif %}  
+        </div>
+
+    <button type="submit">Continue</button>
+</form>
+
+{% else %}
+<!-- Step 2: Enter phone num_ and amount-->
+    <form method="POST" action="">
+    {% csrf_token %}
+    <input type="hidden" name="select_airtime" value="">
+    <input type="hidden" name="network_id" value="{{ selected_network.id }}">
+
+
+    <div>
+        <label>Network</label>
+        <p><strong>{{ selected_network.name }}</strong></p>
+    </div>
+
+    <div>
+    <label for="id_phone">Phone Number</label>
+    
+<input type="text" name="phone" inputmode="numeric" pattern="\d{11}" placeholder="Enter Phone Number" maxlength="11" minlength="11" required id="id_phone">
+
+    </div>
+
+    
+    <div>
+        <label for="id_amount">Amount:($)</label>
+      
+<input type="number" name="amount" min="50" step="0.01" required id="id_amount">
+
+    </div>
+
+    <button type="summit">Proceed</button>
+    </form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>WELCOME {{ user.email }}!</h3>
+<p> Wallet Balance: ${{ user.wallet.balance }}</p>
+
+<h4>Available Services:</h4>
+
+<a href="{% url 'buy_data' %}">Buy Data</a>
+<a href="{% url 'buy_airtime' %}">Buy Airtime</a>
+<a href="#">Transactons History</a>
+
+<h3>Recent Transactions</h3>
+{% for t in transactions %}
+<p>
+    {{ t.status }}-
+    {{ t.phone_number }}-
+    ${{ t.amount }}-
+    {{ t.id }}
+</p>
+{% endfor %}
+{% endblock content %}

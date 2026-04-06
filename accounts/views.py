@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.http import HttpResponse
 from .forms import RegisterForm
 from wallets.models import Wallet
@@ -49,9 +50,12 @@ def dashboard(request):
         'wallet': wallet,
         'transactions': transactions
         }
-
     return render(request, 'accounts/dashboard.html', context)
+
+@login_required
+def profile(request):
+    return render(request, 'accounts/profile.html')
 
 
 def logout(request):
-    return render('yooo')
+    return redirect(login)

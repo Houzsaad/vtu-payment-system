@@ -21,7 +21,8 @@
             <p style="color: red;">{{ network_form.errors }}</p>
         {% endif %}
 
-    <button type="submit" name="selected_network">Continue</button>
+    <button type="submit" name="selected_network">Continue</button> | <a href="{% url 'dashboard' %}">Back</a>
+    
 </form>
 
 {% else %}
@@ -33,7 +34,7 @@
 
 <div>
     <label>Network</label>
-    <p><strong>{{ selected_network.name }}</strong></p>
+    <p><strong>{{ selected_network }}</strong></p>
 </div>
 
 <div>
@@ -51,7 +52,7 @@
         <p style="color: red;">{{ plan_form.plan.errors }}</p>
     {% endif %}
 </div>
-    <button type="summit">Proceed</button>
+    <button type="submit">Proceed</button> | <a href="{% url 'buy_data' %}">Back</a>
 </form>
 {% endif %}
 {% endblock content %}

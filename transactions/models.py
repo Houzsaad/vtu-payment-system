@@ -55,7 +55,7 @@ class Transaction(models.Model):
         ordering = ['-created_at'] #lasttest trxns come first
     
     def __str__(self):
-        return f"{self.transaction_type} - ${self.amount} - {self.reference_id} - {self.phone_number}"
+        return f"{self.transaction_type} - ₦{self.amount} - {self.reference_id} - {self.phone_number}"
 
 
 

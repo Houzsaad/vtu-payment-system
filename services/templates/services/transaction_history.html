@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex align-items-center mb-3">
+    <a href="{% url 'dashboard' %}" class="text-white me-2">
+        <i class="bi bi-arrow-left fs-5"></i>
+    </a>
+    <h5 class="fw-bold text-white mb-0">Transaction History</h5>
+</div>
+
+</div>
+    {% for t in transactions %}
+    <div class=" d-flex justify-content-between align-items-center border-bottom py-2">
+        <div class="d-flex align-items-center gap-2">
+            <div class="bg-warning rounded-3 p-2">
+                <i class="bi bi-bar-chart-fill text-white"></i>
+            </div>
+            <div>
+                 <p class="mb-0 fw-bold small">{{ t.status }}</p>
+                <small class="text-muted">{{ t.created_at |date:'M ,d, Y' }}</small>
+                <small class="textx_muted">{{ t.phone_number }}</small>
+            </div>
+        </div>
+        <div class="text-end">
+            <p class="mb-0 fw-bold
+                {% if t.status == 'compeleted' %} text-compeleted
+                {% else %} text-danger{% endif %}">
+                -₦{{ t.amount }}
+            </p>
+            <small class="badge
+                {% if t.status == 'compeleted' %}bg-compeleted
+                {% else %}bg-danger{% endif %}
+                {{ t.status }}
+            </small>
+        </div>
+    </div>
+    {% empty %}
+    <div class="text-center py-4">
+        <i class="bi bi-clock-history fs-1 text-muted"></i>
+        <p class="text-muted mt-2">No Transaction Yet!</p>
+    </div>
+    {% endfor %}
+</div>
+    {% endblock content %}
+
+
+

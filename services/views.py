@@ -9,6 +9,8 @@ from .forms import NetworkSelectionForm, AirtimeForm, DataPlanForm
 
 from .vtpass import purchase_data, purchase_airtime
 import uuid
+import time
+import datetime
 @login_required
 def buy_data(request):
     network_form = NetworkSelectionForm(category_slug='data')
@@ -43,9 +45,10 @@ def buy_data(request):
                     'plan_id': plan.id,
                     'phone': phone,
                     'amount': str(plan.amount),
-                    'service': f"{selected_network.name} {plan.name} Data",
+                    'service': f"{selected_network.name} Data",
                     'network': selected_network.name
                 }
+
                 return redirect('confirm_transaction')
     return render(request, 'services/buy_data.html', {
         'network_form': network_form,
@@ -104,26 +107,32 @@ def buy_airtime(request):
 def confirm_transaction(request):
     pending = request.session.get('pending_transaction')
 
+#    print('Pending data:', pending)
+    print('ssn keys:', request.session.keys())
+    print('pending:', request.session.get('pending_transaction'))
+    
+
     if not pending:
         return redirect('dashboard')
 
     if request.method == 'POST':
         pin = request.POST.get('pin')
-        #phone = request.POST.get('phone')
-        amount = Decimal(pending['amount'])
-        #amount = Decimal(request.POST.get('amount'))
-        #service = request.POST.get('service')
         user = request.user
         wallet = Wallet.objects.get(user=user)
+        amount = Decimal(pending['amount'])
+        reference = uuid.uuid4()   
 
         if  not user.verify_transaction_pin(pin):
             return render(request, 'services/confirm_transaction.html', {
                     'error': 'incorrect pin',
                     'pending': pending
-                    #'phone': phone,
-                    #'amount': amount,
-                    #'service': service,
                 })
+        
+        if wallet.balance < amount:
+            return render (request, 'services/confirm_transaction.html', {
+                'error': 'insfcnt fund',
+                'pending': pending
+            })
         
         try:
             wallet.withdraw(amount)
@@ -131,24 +140,33 @@ def confirm_transaction(request):
             return render(request, 'services/confirm_transaction.html', {
                 'error': str(e),
                 'pending': pending
-                #'phone': phone,
-                #'amount': amount,
-                #'service': service,
             })
+
         # generate unique reference
-        reference = uuid.uuid4
+        #reference = #f"{uuid.uuid4().hex}-{int(time.time())}"
+        #reference = datetime.datetime.now().strftime('%Y%m%d%H%M%S%') + uuid.uuid4().hex[:8]
+        reference = uuid.uuid4().hex
+        
+        response = None
+        status = Transaction.TransactionStatus.FAILED
+
         #calling vtpass
         try:
             if 'plan_id' in pending:
                 # data purcahe
                 plan = ServicesPlan.objects.get(id=pending['plan_id'])
+                print('Amount being sent:', amount)
+                print('Plan ID:', pending.get('plan_id'))
+                print('Variation code:', plan.vtpass_variation_code)
+                print('Service ID:', plan.provider.vtpass_services_id)
                 response = purchase_data(
                     phone_number=pending['phone'],
+                    service_id=plan.provider.vtpass_services_id,
                     variation_code=plan.vtpass_variation_code,
                     amount=amount,
-                    service_id=plan.provider.vtpass_services_id,
                     reference=reference
                 )
+
             else:
                 # purcahise airtime
                 from .models import ServiceProvider
@@ -160,9 +178,11 @@ def confirm_transaction(request):
                     reference=reference
                 )
             print('Vtpass response:', response)
+
             # response status
             if response.get('code') == '000':
                 status = Transaction.TransactionStatus.COMPLETED
+
             else:
                 #refund the money
                 wallet.deposit(amount)
@@ -177,16 +197,19 @@ def confirm_transaction(request):
             #log trxns
         Transaction.objects.create(
             wallet=wallet,  
-           # transantion_type=Transaction.TransactionType.VTU_PURCHASE,
+            transaction_type=Transaction.TransactionType.VTU_PURCHASE,
+            amount=amount,
             user=user,
             phone_number=pending['phone'],
-            amount=amount,
             status=status,
             #description=f"{pending['service']} for {pending['phone']}"
         )
+
         del request.session['pending_transaction']
+
         if status == Transaction.TransactionStatus.COMPLETED:
             return redirect('dashboard')
+        
         else:
             return render(request, 'services/confirm_transaction.html', {
                 'error': 'Transaction failed. Your wallet has been refunded',
@@ -194,4 +217,16 @@ def confirm_transaction(request):
             })
 
 
-    return render(request, 'services/confirm_transaction.html')
+    return render(request, 'services/confirm_transaction.html',{
+        'pending': pending
+    })
+
+
+@login_required
+def transaction_history(request):
+    transactions = Transaction.objects.filter(
+        wallet=request.user.wallet
+    )#.ordered_by('-created_at')
+    return render(request, 'services/transaction_history.html',{
+        'transactions': transactions
+    })

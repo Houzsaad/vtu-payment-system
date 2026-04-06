@@ -21,6 +21,9 @@ def  purchase_data(phone_number, service_id, variation_code, amount, reference):
         'amount': str(amount),
         'phone': phone_number
     }
+    print('URL:', url)
+    print('Payload:', payload)
+    print('Headers:', get_headers())
     response = requests.post(url, json=payload, headers=get_headers())
     print('Raw response:', response.text)
     print('Status code:', response.status_code)

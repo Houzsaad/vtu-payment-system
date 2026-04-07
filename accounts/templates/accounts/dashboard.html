@@ -2,17 +2,20 @@
 {% block content %}
 
 <div class="mb-3">
-    <p class="mb-0 text-white-50">Good day 👋!</p>
-    <h4 class="fw-bold text-white">{{ user.email }}</h4>
+    <p class="mb-0 text-white-50">Good day, {{ user.email }}👋!</p>
+    <!--<h4 class="fw-bold text-blue">{{ user.email }}</h4>-->
 </div>
 
 <div class="card p-3 mb-3">
     <small class="text-muted">SALISU MAHADI DATA - AVAILABLE BALANCE</small>
 
-    <div class="d-flex align-items-center gap-2 mt-1">
+    <div class="d-flex align-items-center gap-3 mt-2">
         <h3 class="fw-bold mb-0" id="balance">₦{{ user.wallet.balance }}</h3>
-        <h3 class="fw-bold mb-0 d-none" id="hidden">₦ ......</h3>
-        <i class="bi bi-eye-fill fs-4" id="eyeIcon" onclick="toggleBalance()" style="cursor:pointer;"></i>
+        <h3 class="fw-bold mb-0" id="hidden" style="display: none;">₦...</h3>
+        <i class="bi bi-eye-fill fs-4 align-self-center"
+        id="eyeIcon"
+        onclick="toggleBalance()" 
+        style="cursor:pointer;"></i>
     </div>
 </div>
 
@@ -22,23 +25,21 @@
         const hidden = document.getElementById('hidden');
         const eye = document.getElementById('eyeIcon');
 
-        if (hidden.classList.contains('d-none')) {
-            balance.classList.add('d-none');
-            hidden.classList.remove('d-none');
-            eye.classList.remove('bi-eye-slash-fill');
-            eye.classList.add('bi-eye-fill');
+        if (hidden.style.display === 'none') {
+            balance.style.display = 'none';
+            hidden.style.display = 'block';
+            eye.className = 'bi bi-eye-slash-fill fs-4';
         } else {
-            balance.classList.remove('d-none');
-            hidden.classList.add('d-none');
-            eye.classList.remove('bi-eye-fill');
-            eye.classList.add('bi-eye-slash-fill');
+            balance.style.display = 'block';
+            hidden.style.display = 'none';
+            eye.className = ' bi bi-eye-fill fs-4';
         }
     }
 </script>
 
 <div class="card bg-white text-dark mb-3 p-3">
     <h6 class="fw-bold mb-3">Available Services:</h6>
-    <div class="row text-center">
+    <div class="raw text-center">
         <div class="col-3">
             <a href="{% url 'buy_data' %}" class="text-decoration-none text-dark">
                 <div class="bg-warning rounded-3 p-2 mb-1">

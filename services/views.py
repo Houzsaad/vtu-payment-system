@@ -4,6 +4,8 @@ from wallets.models import Wallet
 from transactions.models import Transaction
 from decimal import Decimal
 
+#from django.shortcuts import render, redirect
+
 from .forms import ServiceCategory, ServicesPlan, ServiceProvider
 from .forms import NetworkSelectionForm, AirtimeForm, DataPlanForm
 
@@ -230,3 +232,6 @@ def transaction_history(request):
     return render(request, 'services/transaction_history.html',{
         'transactions': transactions
     })
+
+def home(request):
+    return redirect('dashboard')

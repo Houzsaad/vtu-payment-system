@@ -41,9 +41,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://salisumahadidata.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://salisumahadidata.onrender.com']
 
 
 # Application definition

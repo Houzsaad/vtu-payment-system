@@ -35,7 +35,7 @@ class ServicesPlan(models.Model):
     #vtpass_service_id = models.ChaField(max_length=100)
     is_active = models.BooleanField(default=True) #30 days
     def __str__(self):
-        return f"{self.provider.name} | {self.name} | ${self.amount}"
+        return f"{self.provider.name} | {self.name} | ₦{self.amount}"
 
 class ServicesRequest(models.Model):
 
@@ -56,7 +56,7 @@ class ServicesRequest(models.Model):
         null=True,
         related_name='requests'
     )
-    phone_numberc = models.CharField(max_length=11)
+    phone_number = models.CharField(max_length=11)
     amount = models.DecimalField(max_digits=12, decimal_places=2)       
     status = models.CharField(
         max_length=10,

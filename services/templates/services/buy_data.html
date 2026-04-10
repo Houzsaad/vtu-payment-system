@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Buy Data</h2>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if not selected_network %}
+<!-- Step 1: Select Network -->
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="hidden" name="selected_network" value="">
+    <div>
+        <label> Select Network </label>
+        {{ network_form.network }}
+    </div> 
+
+        {% if metwork_form.errors %}
+            <p style="color: red;">{{ network_form.errors }}</p>
+        {% endif %}
+
+    <button type="submit" name="selected_network">Continue</button> | <a href="{% url 'dashboard' %}">Back</a>
+    
+</form>
+
+{% else %}
+
+<form method="POST" action="">
+{% csrf_token %}
+<input type="hidden" name="select_plan" value="">
+<input type="hidden" name="network_id" value="{{ selected_network.id }}">
+
+<div>
+    <label>Network</label>
+    <p><strong>{{ selected_network }}</strong></p>
+</div>
+
+<div>
+    <label>Phone Number</label>
+    {{ plan_form.phone }}
+    {% if plan_form.phone.errors %}
+        <p style="color: red;">{{ plan_form.phone.errors }}</p>
+    {% endif %}
+</div>
+
+<div>
+    <label>Select Plan</label>
+    {{ plan_form.plan }}
+    {% if plan_form.plan.errors %}
+        <p style="color: red;">{{ plan_form.plan.errors }}</p>
+    {% endif %}
+</div>
+    <button type="submit">Proceed</button> | <a href="{% url 'buy_data' %}">Back</a>
+</form>
+{% endif %}
+{% endblock content %}

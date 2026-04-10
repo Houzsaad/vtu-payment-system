@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="mb-3">
+    <p class="mb-0 text-white-50">Good day, {{ user.email }}👋!</p>
+    <!--<h4 class="fw-bold text-blue">{{ user.email }}</h4>-->
+</div>
+
+<div class="card p-3 mb-3">
+    <small class="text-muted">SALISU MAHADI DATA - AVAILABLE BALANCE</small>
+
+    <!--<div class="d-flex align-items-center gap-2">-->
+    <div style="display: flex; align-items: center; gap: 8px;">
+        <h3 class="fw-bold mb-0" id="balance">₦{{ user.wallet.balance }} </h3>
+        <h3 class="fw-bold mb-0" id="hidden" style="display: none;">₦🙈🙈🙈</h3>
+        <i class="bi bi-eye-fill fs-4 align-self-center>
+        id="eyeIcon"
+        onclick="toggleBalance()" 
+        style="cursor:pointer;">
+    </h3>
+</i>
+    </div>
+</div>
+
+<script>
+    function toggleBalance() {
+        const balance = document.getElementById('balance');
+        const hidden = document.getElementById('hidden');
+        const eye = document.getElementById('eyeIcon');
+
+        if (hidden.style.display === 'none') {
+            balance.style.display = 'none';
+            hidden.style.display = 'block';
+            eye.className = 'bi bi-eye-slash-fill fs-4';
+        } else {
+            balance.style.display = 'block';
+            hidden.style.display = 'none';
+            eye.className = ' bi bi-eye-fill fs-4';
+        }
+    }
+</script>
+
+<div class="card bg-white text-dark mb-3 p-3">
+    <h6 class="fw-bold mb-3">Available Services:</h6>
+    <div class="raw text-center">
+        <div class="col-3">
+            <a href="{% url 'buy_data' %}" class="text-decoration-none text-dark">
+                <div class="bg-warning rounded-3 p-2 mb-1">
+                    <i class="bi bi-bar-chart-fill fs-4"></i>
+                </div>
+                <small>Data</small>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="{% url 'buy_airtime' %}" class="text-decoration-none text-dark">
+                <div class="bg-success bg-opacity-25 rounded-3 p-2 mb-1">
+                    <i class="bi bi-telephone-fill fs-4 text-success"></i>
+                </div>
+                <small>Airtime</small>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="#" class="text-decoration-none text-dark">
+                <div class="bg-success bg-opacity-25 rounded-3 p-2 mb-1">
+                    <i class="bi bi-lightning-fill fs-4 text-warning"></i>
+                </div>
+                <small>Electricity</small>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="#" class="text-decoration-none text-dark">
+                <div class="bg-success bg-opacity-25 rounded-3 p-2 mb-1">
+                    <i class="bi bi-tv-fill fs-4 text-danger"></i>
+                </div>
+                <small>Cable TV</small>
+            </a>
+        </div>
+    </div>
+
+    {% for t in transactions %}
+    <div class=" d-flex justify-content-between align-items-center border-bottom py-2">
+        <div class="d-flex align-items-center gap-2">
+            <div class="bg-warning rounded-3 p-2">
+                <i class="bi bi-bar-chart-fill text-white"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <p class="mb-0 fw-bold small">{{ t.type }}</p>
+    <small class="text-muted">{{ t.created_at |date:'M ,d, Y'}}</small>
+</div>
+
+<div class="text-end">
+    <p class="mb-0 fw-bold
+        {% if t.status == 'success' %} text-success
+        {% else %} text-danger{% endif %}">
+        -₦{{ t.amount }}
+    </p>
+    <small class="text-muted">{{ t.status }}</small>
+</div>
+</div>
+{% empty %}
+<p class="text-muted text-center py-2">No Transaction Yet!</p>
+{% endfor %}
+{% endblock content%}

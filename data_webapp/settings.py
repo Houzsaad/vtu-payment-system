@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY ='django-secre-key(@Mam@2023.@#$%#@$%67742003****)' #'django-insecure-&4^vbo-c)di=2+5_1pte65r0n50scyxp4r573&kbp+x(3qt@h#'
+SECRET_KEY ='django-secre-key(@Mam@2023.@#$%#@$%67742003****)' #'django-insecure-&4^vbo-cdi=2+5_1pte65r0n50scyxp4r573&kbp+x3qt@h#'
 
 
 VTPASS_API_KEY= os.environ.get("VTPASS_API_KEY")

@@ -3,7 +3,7 @@ from django.urls import path, include
 #from django.http import HttpResponse
 
 #def home (request):
- 3   return HttpResponse('hey')
+#   return HttpResponse('hey')
 
 urlpatterns = [
 

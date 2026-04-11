@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
-from services.views import home
+#from django.http import HttpResponse
+
+#def home (request):
+ 3   return HttpResponse('hey')
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
 
-    path('accounts', include('accounts.urls')),
+    path('', include('accounts.urls')),
     
     #path('', home, name='home'),
 

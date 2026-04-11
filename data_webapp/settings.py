@@ -50,9 +50,20 @@ DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 #ALLOWED_HOSTS = ['salisumahadidata.onrender.com']
 #ALLOWED_HOST = ['127.0.0.1', 'localhost']
 #=======
-ALLOWED_HOSTS = ['https://salisumahadidata.onrender.com', 'localhost', '127.0.0.1']
-#>>>>>>> fe80a850a364d529771be31eab55158a9c160e92
+ALLOWED_HOSTS = ['salisumahadidata.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
+#>>>>>>> fe80a
+# 850a364d529771be31eab55158a9c160e92
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 CSRF_TRUSTED_ORIGINS = ['https://salisumahadidata.onrender.com']
+if RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
 
 
 # Application definition

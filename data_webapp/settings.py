@@ -38,17 +38,18 @@ VTPASS_BASE_URL= os.environ.get("VTPASS_BASE_URL")
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-fallback-key-for-rendering")
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ALLOWED_HOSTS = ['salisumahadidata.onrender.com']
-=======
+#=======
 ALLOWED_HOSTS = ['https://salisumahadidata.onrender.com']
->>>>>>> fe80a850a364d529771be31eab55158a9c160e92
-
+#>>>>>>> fe80a850a364d529771be31eab55158a9c160e92
 CSRF_TRUSTED_ORIGINS = ['https://salisumahadidata.onrender.com']
 
 

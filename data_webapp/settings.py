@@ -43,13 +43,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-fallback-key-for-rend
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #<<<<<<< HEAD
 #ALLOWED_HOSTS = ['salisumahadidata.onrender.com']
-ALLOWED_HOST = ['127.0.0.1', 'localhost']
+#ALLOWED_HOST = ['127.0.0.1', 'localhost']
 #=======
-#ALLOWED_HOSTS = ['https://salisumahadidata.onrender.com']
+ALLOWED_HOSTS = ['https://salisumahadidata.onrender.com']
 #>>>>>>> fe80a850a364d529771be31eab55158a9c160e92
 CSRF_TRUSTED_ORIGINS = ['https://salisumahadidata.onrender.com']
 

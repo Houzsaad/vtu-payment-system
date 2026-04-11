@@ -43,7 +43,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", SECRET_KEY)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 #<<<<<<< HEAD
@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'accounts',
     'wallets',

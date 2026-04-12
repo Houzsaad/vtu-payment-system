@@ -4,12 +4,12 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password, check_password
 
 phone_validator = RegexValidator(
-    regex='\^d{11}$',
+    regex=r'^\d{11}$',
     message = ("phone number must be 11 digits")
 )
 
 pin_validator = RegexValidator(
-    regex='\^d{4}$',
+    regex=r'^\d{4}$',
     message = ("trxns pin must be 4 digits")
 )
 

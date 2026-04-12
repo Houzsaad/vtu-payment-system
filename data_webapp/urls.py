@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 #from django.http import HttpResponse
 
 #def home (request):
 #   return HttpResponse('hey')
 
 urlpatterns = [
+
+    path('', lambda request: redirect('login'), name='home'),
 
     path('admin/', admin.site.urls),
 

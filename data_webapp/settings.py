@@ -80,7 +80,8 @@ INSTALLED_APPS = [
     'wallets',
     'services',
     'notifications',
-    'transactions'
+    'transactions',
+    #'build.sh'
 ]
 
 AUTH_USER_MODEL = 'accounts.Costomer'

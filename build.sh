@@ -8,5 +8,6 @@ python manage.py migrate
 
 python manage.py shell -c"
 from accounts.models import Costomer
-if not Costomer.objects.filter(emial='admin@admin.com').exists():
+if not Costomer.objects.filter(email='admin@admin.com').exists():
     Costomer.objects.create_superuser('smahadi@admin.com', '09065379803', 'smahadi2026')
+    

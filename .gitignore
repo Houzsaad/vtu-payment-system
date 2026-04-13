@@ -6,3 +6,4 @@ __pychace__/
 *.log
 *.env
 db.sqlite3
+venv

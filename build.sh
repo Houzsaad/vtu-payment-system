@@ -5,7 +5,7 @@ set -o errexit
 pip install -r requirements.txt
 python manage.py collectstatic --no-input
 python manage.py migrate
-python manage.py loaddata services --indent 2 > services/fixtures/initial_data.json
+python manage.py loaddata services services/fixtures/initial_data.json
 python manage.py shell -c"
 import os
 from accounts.models import Costomer

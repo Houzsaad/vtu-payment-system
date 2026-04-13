@@ -1,0 +1,308 @@
+[
+{
+  "model": "services.servicecategory",
+  "pk": 2,
+  "fields": {
+    "name": "Data",
+    "slug": "data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicecategory",
+  "pk": 3,
+  "fields": {
+    "name": "Airtime",
+    "slug": "airtime",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicecategory",
+  "pk": 4,
+  "fields": {
+    "name": "MTN",
+    "slug": "Airtime",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 1,
+  "fields": {
+    "category": 2,
+    "name": "MTN",
+    "slug": "mtn-data",
+    "vtpass_services_id": "mtn-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 2,
+  "fields": {
+    "category": 2,
+    "name": "Airtel",
+    "slug": "airtel-data",
+    "vtpass_services_id": "airtel-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 3,
+  "fields": {
+    "category": 2,
+    "name": "Glo",
+    "slug": "glo-data",
+    "vtpass_services_id": "glo-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "9mobile",
+    "slug": "9mobile-data",
+    "vtpass_services_id": "9mobile-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 6,
+  "fields": {
+    "category": 3,
+    "name": "Airtel",
+    "slug": "airtel-airtime",
+    "vtpass_services_id": "airtel",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Glo",
+    "slug": "glo-airtime",
+    "vtpass_services_id": "glo",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 8,
+  "fields": {
+    "category": 3,
+    "name": "9mobile",
+    "slug": "9mobile-airtime",
+    "vtpass_services_id": "9mobile",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 9,
+  "fields": {
+    "category": 3,
+    "name": "MTN",
+    "slug": "mtn-airtime",
+    "vtpass_services_id": "mtn",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 10,
+  "fields": {
+    "category": 2,
+    "name": "MTN SME",
+    "slug": "mtn-sme",
+    "vtpass_services_id": "mtn-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 11,
+  "fields": {
+    "category": 2,
+    "name": "MTN Gifting",
+    "slug": "mtn-gifting",
+    "vtpass_services_id": "mtn-gifting",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 12,
+  "fields": {
+    "category": 2,
+    "name": "MTN Corporate",
+    "slug": "mtn-corporate",
+    "vtpass_services_id": "mtn-corporate-gifting",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 13,
+  "fields": {
+    "category": 2,
+    "name": "AirtelSME",
+    "slug": "airtel-sme",
+    "vtpass_services_id": "airtel-data",
+    "is_active": true
+  }
+},
+{
+  "model": "services.serviceprovider",
+  "pk": 14,
+  "fields": {
+    "category": 2,
+    "name": "Airtel Gifting",
+    "slug": "airtel-gifting",
+    "vtpass_services_id": "airtel-gifting",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 1,
+  "fields": {
+    "provider": 1,
+    "name": "1GB",
+    "vtpass_variation_code": "mtn=1gb-30days",
+    "amount": "400.00",
+    "validity": "30 Days",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 2,
+  "fields": {
+    "provider": 1,
+    "name": "MTN 2GB 30days",
+    "vtpass_variation_code": "mtn-2gb-1200",
+    "amount": "1200.00",
+    "validity": "30 Days",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 3,
+  "fields": {
+    "provider": 2,
+    "name": "1GB",
+    "vtpass_variation_code": "airtel-1gb-7days",
+    "amount": "350.00",
+    "validity": "1 Week",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 4,
+  "fields": {
+    "provider": 1,
+    "name": "MTN 100MB 24hrs",
+    "vtpass_variation_code": "mtn-100mb-100",
+    "amount": "100.00",
+    "validity": "24hrs",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 5,
+  "fields": {
+    "provider": 1,
+    "name": "MTN Data",
+    "vtpass_variation_code": "mtn-50mb-200",
+    "amount": "200.00",
+    "validity": "2 days",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 6,
+  "fields": {
+    "provider": 1,
+    "name": "MTN Data",
+    "vtpass_variation_code": "mtn-40gb-10000",
+    "amount": "10000.00",
+    "validity": "30 days",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 7,
+  "fields": {
+    "provider": 1,
+    "name": "MTN",
+    "vtpass_variation_code": "mtn-100mb-1000",
+    "amount": "1000.00",
+    "validity": "30 Days",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 8,
+  "fields": {
+    "provider": 2,
+    "name": "Airtel Data Bundle",
+    "vtpass_variation_code": "airt-50",
+    "amount": "49.99",
+    "validity": "1Day",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesplan",
+  "pk": 9,
+  "fields": {
+    "provider": 2,
+    "name": "AIRTEL",
+    "vtpass_variation_code": "airt-100",
+    "amount": "99.00",
+    "validity": "1Day",
+    "is_active": true
+  }
+},
+{
+  "model": "services.servicesrequest",
+  "pk": 1,
+  "fields": {
+    "reference": "a370573b-87b7-411b-9df3-c66ee040b7d9",
+    "user": 2,
+    "plan": 6,
+    "phone_number": "09034567876",
+    "amount": "233.00",
+    "status": "success",
+    "vtpass_response": null,
+    "created_at": "2026-04-08T01:46:48.719Z"
+  }
+},
+{
+  "model": "services.servicesrequest",
+  "pk": 2,
+  "fields": {
+    "reference": "e4902022-6ad4-4729-8df0-cb0a738c6092",
+    "user": 1,
+    "plan": 2,
+    "phone_number": "09234567899",
+    "amount": "1200.00",
+    "status": "success",
+    "vtpass_response": null,
+    "created_at": "2026-04-08T19:30:49.067Z"
+  }
+}
+]

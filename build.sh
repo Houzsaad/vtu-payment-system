@@ -15,7 +15,4 @@ password = os.environ.get('ADMIN_PASSWORD')
 
 if not Costomer.objects.filter(email=email).exists():
     Costomer.objects.create_superuser(email, phone_number, password)
-    user.is_staff = True
-    user.is_superuser = True
-    user.save()
 "

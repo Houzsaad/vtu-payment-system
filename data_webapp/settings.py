@@ -30,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY ='django-secre-key(@Mam@2023.@#$%#@$%67742003****)' #'django-insecure-&4^vbo-cdi=2+5_1pte65r0n50scyxp4r573&kbp+x3qt@h#'
 
 
-VTPASS_API_KEY= os.environ.get("VTPASS_API_KEY")
-VTPASS_PUBLIC_KEY= os.environ.get("VTPASS_PUBLIC_KEY")
-VTPASS_SECRET_KEY= os.environ.get("VTPASS_SECRET_KEY")
-VTPASS_BASE_URL= os.environ.get("VTPASS_BASE_URL")
+VTPASS_API_KEY = os.environ.get("VTPASS_API_KEY")
+VTPASS_PUBLIC_KEY = os.environ.get("VTPASS_PUBLIC_KEY")
+VTPASS_SECRET_KEY = os.environ.get("VTPASS_SECRET_KEY")
+VTPASS_BASE_URL = os.environ.get("VTPASS_BASE_URL")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -42,9 +42,17 @@ SECRET_KEY = os.environ.get("SECRET_KEY", SECRET_KEY)
 
 
 
+MONNIFY_API_KEY = os.environ.get("MONNIFY_API_KEY")
+MONNIFY_CONTRACT_CODE = os.environ.get("MONNIFY_CONTRACT_CODE")
+MONNIFY_SECRET_KEY = os.environ.get("MONNIFY_SECRET_KEY")
+MONNIFY_BASE_URL = os.environ.get("MONNIFY_BASE_URL")
+
+
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+#DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 #<<<<<<< HEAD
 #ALLOWED_HOSTS = ['salisumahadidata.onrender.com']

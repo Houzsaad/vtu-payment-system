@@ -1,5 +1,6 @@
 from django.urls import path
+from . import views
 
 urlpatterns = [
-    #path('', accounts, name('accounts.urls'))
+    path('webhook/monnify', views.monnify_webhook, name='monnify_webhook')
 ]

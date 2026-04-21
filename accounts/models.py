@@ -69,7 +69,15 @@ class Costomer(AbstractBaseUser, PermissionsMixin):
 
 
 
+class MonnifyVirtualAccount(models.Model):
+    costomer = models.OneToOneField(Costomer, on_delete=models.CASCADE, related_name='virtual_account')
+    account_number = models.CharField(max_length=20)
+    bank_name = models.CharField(max_length=100)
+    account_name = models.CharField(max_length=100)
+    account_reference = models.CharField(max_length=100, unique=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-
+    def __str__(self):
+        return f"{self.costomer.email} - {self.account_number}"
 
 # Create your models here.

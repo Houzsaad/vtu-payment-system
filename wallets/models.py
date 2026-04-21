@@ -26,15 +26,13 @@ class Wallet(models.Model):
         self.save()
 
     def __str__(self):
-        return f"{self.user.email} - ${self.balance}"
+        return f"{self.user.email} - ₦{self.balance}"
 
     def withdraw(self, amount):
         if amount <= 0:
             raise ValueError('withdraw must NOT be 0 ')
 
         if self.balance < amount:
-            raise ValueError('isfcnt fund')
+            raise ValueError('Insufficient Fund🤦‍♂️😏')
         self.balance -= amount
         self.save()
-
-    

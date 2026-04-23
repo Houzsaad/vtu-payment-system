@@ -8,7 +8,7 @@ class RegisterForm(forms.ModelForm):
     
     class Meta:
         model = Costomer
-        fields = ['phone_number', 'email', 'password', 'transaction_pin']
+        fields = ['first_name', 'last_name', 'username', 'phone_number', 'email', 'password', 'transaction_pin']
 
     def clean(self):
         cleaned_data = super().clean()
@@ -16,9 +16,10 @@ class RegisterForm(forms.ModelForm):
         confirm_password = cleaned_data.get("confirm_password")
 
         if password != confirm_password:
-            raise forms.ValidationError("Passwords isn't matched")
+            raise forms.ValidationError("Passwords is not matched❌")
         return cleaned_data
-        
+    
+
 class PinForm(forms.Form):
     pin = forms.CharField(
         max_length=128,
@@ -31,6 +32,5 @@ class PinForm(forms.Form):
         digits = pin
         if not pin.isdigits:
             raise forms.ValidationError("PIN must contain only number")
-
         return pin
 

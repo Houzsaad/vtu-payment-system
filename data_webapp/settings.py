@@ -51,7 +51,7 @@ MONNIFY_BASE_URL = os.environ.get("MONNIFY_BASE_URL")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 #<<<<<<< HEAD

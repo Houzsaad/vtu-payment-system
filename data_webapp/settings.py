@@ -30,10 +30,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY ='django-secre-key(@Mam@2023.@#$%#@$%67742003****)' #'django-insecure-&4^vbo-cdi=2+5_1pte65r0n50scyxp4r573&kbp+x3qt@h#'
 
 
-VTPASS_API_KEY = os.environ.get("VTPASS_API_KEY")
-VTPASS_PUBLIC_KEY = os.environ.get("VTPASS_PUBLIC_KEY")
-VTPASS_SECRET_KEY = os.environ.get("VTPASS_SECRET_KEY")
-VTPASS_BASE_URL = os.environ.get("VTPASS_BASE_URL")
+DODODATA_API_KEY = os.environ.get("DODODATA_API_KEY")
+# VTPASS_PUBLIC_KEY = os.environ.get("VTPASS_PUBLIC_KEY")
+# VTPASS_SECRET_KEY = os.environ.get("VTPASS_SECRET_KEY")
+#DODODATA_BASE_URL = os.environ.get("DODODATA_BASE_URL")
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 

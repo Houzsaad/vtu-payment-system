@@ -9,7 +9,7 @@ from decimal import Decimal
 from .forms import ServiceCategory, ServicesPlan, ServiceProvider
 from .forms import NetworkSelectionForm, AirtimeForm, DataPlanForm
 
-from .vtpass import purchase_data, purchase_airtime
+from .dododata import purchase_data, purchase_airtime
 import uuid
 import time
 import datetime
@@ -27,7 +27,6 @@ def buy_data(request):
             #print('POST DATA:', request.POST)
           
             print('Form errors:', network_form.errors)
-            #print('Form fields:', network_form.fields)
             
             if network_form.is_valid():
                 selected_network = network_form.cleaned_data['network']
@@ -63,7 +62,6 @@ def buy_airtime(request):
     network_form = NetworkSelectionForm(category_slug='airtime')
     selected_network = None
     airtime_form = None
-    #show_step2 = False
 
     if request.method == 'POST':
         print('ALL POST KEYS:', list(request.POST.keys()))
@@ -75,9 +73,6 @@ def buy_airtime(request):
             if network_form.is_valid():
                 selected_network = network_form.cleaned_data['network']
                 airtime_form = AirtimeForm()
-               # print('Selected network:', selected_network)
-                #print('Airtime_form:', airtime_form)
-         #       show_step2 = True
 
         elif 'select_airtime' in request.POST:
             network_id = request.POST.get('network_id')
@@ -92,17 +87,16 @@ def buy_airtime(request):
                     'amount': str(amount),
                     'service': f"{selected_network.name} Airtime",
                     'network': selected_network.name,
-                    'network_vtpass_id': selected_network.vtpass_services_id
+                    'network_dododata_id': selected_network.dododata_services_id
                    
                 }
                 return redirect('confirm_transaction')
             #else:
-            #    show_step2 = True
+            
     return render(request, 'services/buy_airtime.html',{
         'network_form': network_form,
         'airtime_form': airtime_form,
         'selected_network': selected_network,
-        #'show_step2': show_step2
     })       
     #return render(request, 'services/buy_airtime.html')
 
@@ -113,7 +107,6 @@ def confirm_transaction(request):
     print('ssn keys:', request.session.keys())
     print('pending:', request.session.get('pending_transaction'))
     
-
     if not pending:
         return redirect('dashboard')
 
@@ -155,34 +148,34 @@ def confirm_transaction(request):
         #calling vtpass
         try:
             if 'plan_id' in pending:
-                # data purcahe
+                # data purcahe via dododata
                 plan = ServicesPlan.objects.get(id=pending['plan_id'])
                 print('Amount being sent:', amount)
                 print('Plan ID:', pending.get('plan_id'))
-                print('Variation code:', plan.vtpass_variation_code)
-                print('Service ID:', plan.provider.vtpass_services_id)
+                print('Variation code:', plan.dododata_variation_code)
+                print('Service ID:', plan.provider.dododata_services_id)
                 response = purchase_data(
                     phone_number=pending['phone'],
-                    service_id=plan.provider.vtpass_services_id,
-                    variation_code=plan.vtpass_variation_code,
-                    amount=amount,
-                    reference=reference
+                    network_id=plan.provider.dododata_services_id,
+                    plan_id=plan.dododata_variation_code,
+                    #amount=amount,
+                    #reference=reference
                 )
 
             else:
-                # purcahise airtime
+                # purcahise airtime from dododata
                 from .models import ServiceProvider
-                network = ServiceProvider.objects.get(vtpass_services_id=pending['network_vtpass_id'])
+                network = ServiceProvider.objects.get(dododata_services_id=pending['network_dododata_id'])
                 response = purchase_airtime(
                     phone_number=pending['phone'],
-                    service_id=network.vtpass_services_id,
+                    network_name=network.dododata_services_id,
                     amount=amount,
-                    reference=reference
+                    #reference=reference
                 )
-            print('Vtpass response:', response)
+            print('Dododata response:', response)
 
             # response status
-            if response.get('code') == '000':
+            if response.get('status') == 'success':
                 status = Transaction.TransactionStatus.COMPLETED
 
             else:

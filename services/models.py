@@ -17,7 +17,7 @@ class ServiceProvider(models.Model):
     )
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
-    vtpass_services_id = models.CharField(max_length=100)
+    dododata_services_id = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     def __str__(self):
         return f"{self.name} - {self.category.name}"
@@ -29,7 +29,7 @@ class ServicesPlan(models.Model):
         related_name='plan'
     )
     name = models.CharField(max_length=100)
-    vtpass_variation_code = models.CharField(max_length=100)
+    dododata_variation_code = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     validity = models.CharField(max_length=50, null=True, blank=True)
     #vtpass_service_id = models.ChaField(max_length=100)
@@ -63,7 +63,7 @@ class ServicesRequest(models.Model):
         choices=Status.choices,
         default=Status.PENDING
     )
-    vtpass_response = models.JSONField(null=True, blank=True)
+    dododata_response = models.JSONField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

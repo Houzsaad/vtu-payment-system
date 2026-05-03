@@ -43,10 +43,8 @@ class Costomer(AbstractBaseUser, PermissionsMixin):
     phone_regex = RegexValidator(regex=r'^\d{11}$', message="Phone number must be entered in the format: '08012345678'. and 11 digits.")
     pin_validator = RegexValidator(regex=r'^\d{4}$', message="PIN must be entered in the format: '1234'. Exactly 4 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=11)
-    
     transaction_pin = models.CharField(
         max_length=128,
-      #  validators=[pin_validator],
         null=True,
         blank=True
     )

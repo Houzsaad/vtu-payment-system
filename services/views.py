@@ -136,10 +136,7 @@ def confirm_transaction(request):
                 'error': str(e),
                 'pending': pending
             })
-
-        # generate unique reference
-        #reference = #f"{uuid.uuid4().hex}-{int(time.time())}"
-        #reference = datetime.datetime.now().strftime('%Y%m%d%H%M%S%') + uuid.uuid4().hex[:8]
+        
         reference = uuid.uuid4().hex
         
         response = None
@@ -190,9 +187,13 @@ def confirm_transaction(request):
             print('Vtpass error:', e)
 
             #log trxns
+        if 'plam_id' in pending:
+            trxn_type = Transaction.TransactionType.DATA
+        else:
+            trxn_type = Transaction.TransactionType.AIRTIME
         Transaction.objects.create(
             wallet=wallet,  
-            transaction_type=Transaction.TransactionType.VTU_PURCHASE,
+            transaction_type=trxn_type,
             amount=amount,
             user=user,
             phone_number=pending['phone'],

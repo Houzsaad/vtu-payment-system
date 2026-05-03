@@ -15,12 +15,15 @@
             <div class="bg-warning rounded-3 p-2">
                 <i class="bi bi-bar-chart-fill text-white"></i>
             </div>
+
             <div>
-                <p class="mb-0 fw-bold small">{{ t.service_type }}</p>
+                <p class="mb-0 fw-bold small">{{ t.transaction_type }}</p>
+                <small class="text-muted">{{ t.reference_id }}</small></br>
                 <small class="text-muted">{{ t.created_at|date:'M d, Y' }}</small><br>
                 <small class="text-muted">{{ t.phone_number }}</small>
             </div>
         </div>
+        
         <div class="text-end">
             <p class="mb-0 fw-bold {% if t.status == 'completed' %}text-success{% else %}text-danger{% endif %}">
                 -₦{{ t.amount }}

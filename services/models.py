@@ -32,7 +32,6 @@ class ServicesPlan(models.Model):
     dododata_variation_code = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
     validity = models.CharField(max_length=50, null=True, blank=True)
-    #vtpass_service_id = models.ChaField(max_length=100)
     is_active = models.BooleanField(default=True) #30 days
     def __str__(self):
         return f"{self.provider.name} | {self.name} | ₦{self.amount}"

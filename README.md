@@ -19,7 +19,7 @@ A Django-based Virtual Top-Up (VTU) web application that allows users to purchas
 - Profile page with customer care (WhatsApp)
 
 ---
-![image alt(https://github.com/Houzsaad/vtu-payment-system/blob/52266e4d9e9f6de1bbf35111619c70a01ae0418e/WhatsApp%20Image%202026-05-01%20at%2015.46.01.jpeg)]
+![image alt](https://github.com/Houzsaad/vtu-payment-system/blob/52266e4d9e9f6de1bbf35111619c70a01ae0418e/WhatsApp%20Image%202026-05-01%20at%2015.46.01.jpeg)
 
 ## Tech Stack
 

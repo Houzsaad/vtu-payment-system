@@ -30,17 +30,8 @@ A Django-based Virtual Top-Up (VTU) web application that allows users to purchas
 - **Deployment** — Render
 ---
 
-## Project Structure
-data_webapp/
-├── accounts/    
-├── wallet/            
-├── services/          
-├── templates/
-├── static/            
-├── manage.py
-└── requirements.txt
----
-
+## Login page screenshot!
+![image alt](https://github.com/Houzsaad/vtu-payment-system/blob/e685eed34545b3b65d1508275d789806d04ee39b/WhatsApp%20Image%202026-05-01%20at%2015.45.34.jpeg)
 ## Installation
 
 **1. Clone the repository**

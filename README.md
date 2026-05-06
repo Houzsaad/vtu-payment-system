@@ -21,7 +21,7 @@ A Django-based Virtual Top-Up (VTU) web application that allows users to purchas
 ---
 ## Register page!
 <p align="center">
-  <img src="https://github.com/Houzsaad/vtu-payment-system/blob/52266e4d9e9f6de1bbf35111619c70a01ae0418e/WhatsApp%20Image%202026-05-01%20at%2015.46.01.jpeg" width="500"/>
+  <img src="https://github.com/Houzsaad/vtu-payment-system/blob/52266e4d9e9f6de1bbf35111619c70a01ae0418e/WhatsApp%20Image%202026-05-01%20at%2015.46.01.jpeg" width="300"/>
 </p>
 
 ## Tech Stack
@@ -34,11 +34,15 @@ A Django-based Virtual Top-Up (VTU) web application that allows users to purchas
 ---
 
 ## Login page screenshot!
-![image alt](https://github.com/Houzsaad/vtu-payment-system/blob/e685eed34545b3b65d1508275d789806d04ee39b/WhatsApp%20Image%202026-05-01%20at%2015.45.34.jpeg)
+<p align="center">
+  <img src="https://github.com/Houzsaad/vtu-payment-system/blob/e685eed34545b3b65d1508275d789806d04ee39b/WhatsApp%20Image%202026-05-01%20at%2015.45.34.jpeg" width="300"/>
+</p>
 
 ## Dashboard page
-![image alt](https://github.com/Houzsaad/vtu-payment-system/blob/3b13e8974935796f6a5274f192ac75a4d332de47/WhatsApp%20Image%202026-05-01%20at%2015.43.18.jpeg)
-## Installation
+<p align="center">
+  <img src="https://github.com/Houzsaad/vtu-payment-system/blob/3b13e8974935796f6a5274f192ac75a4d332de47/WhatsApp%20Image%202026-05-01%20at%2015.43.18.jpeg" width="300"/>
+</p>
+  ## Installation
 
 **1. Clone the repository**
 ```bash

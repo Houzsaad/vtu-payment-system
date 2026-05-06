@@ -27,17 +27,16 @@ A Django-based Virtual Top-Up (VTU) web application that allows users to purchas
 - **Database** — SQLite (development), PostgreSQL (production)
 - **Payment API** — VTPass
 - **Frontend** — Django Templates, Bootstrap 5, Bootstrap Icons
-- **Deployment** — Render (yet)
-
+- **Deployment** — Render
 ---
 
 ## Project Structure
 data_webapp/
-├── accounts/          # User authentication, registration, login
-├── wallet/            # Wallet model, transactions
-├── services/          # VTU services, VTPass integration
-├── templates/         # HTML templates
-├── static/            # CSS, images
+├── accounts/    
+├── wallet/            
+├── services/          
+├── templates/
+├── static/            
 ├── manage.py
 └── requirements.txt
 ---

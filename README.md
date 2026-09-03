@@ -117,8 +117,9 @@ Receive Response
 Update Transaction Status
   ↓
 Refund Wallet if Transaction Fails
+```
 
-  ## Installation
+ ## Installation
 
 **1. Clone the repository**
 
@@ -177,6 +178,7 @@ VTPASS_SECRET_KEY
 VTPass secret key
 VTPASS_BASE_URL
 VTPass base URL (sandbox or live)
+```
 
 📚 What I Learned
 

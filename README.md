@@ -209,7 +209,7 @@ Backend Developer — Python & Django
 
 GitHub: https://github.com/Houzsaad
 LinkedIn: https://www.linkedin.com/in/huzaifa-sa-ad
-X:  https://www.x.com/Houzsaad
+X: https://www.x.com/Houzsaad
 
 📄 License
 

@@ -121,9 +121,9 @@ Refund Wallet if Transaction Fails
 
  ## Installation
 
-**1. Clone the repository**
 
 ```bash
+1. Clone the repository
 git clone https://github.com/Houzsaad/data_webapp.git
 cd data_webapp
 
@@ -210,3 +210,7 @@ Backend Developer — Python & Django
 GitHub: https://github.com/Houzsaad
 LinkedIn: https://www.linkedin.com/in/huzaifa-sa-ad
 X:  https://www.x.com/Houzsaad
+
+📄 License
+
+This project was developed for educational and commercial purposes.
